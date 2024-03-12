@@ -1,11 +1,13 @@
 package br.ufrn.imd.sistemaestoque.domain;
-
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
 import java.util.List;
 
 @Entity
@@ -16,15 +18,17 @@ public class Estoque {
 
     private String descricao;
 
-    private String endereco;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco", nullable = false)
+    private Endereco endereco;
 
     @OneToMany(mappedBy = "estoque")
     private List<EstoqueProduto> produtos;
 
     public Estoque() {}
 
-    public Estoque(Long id, String descricao, String endereco,
-                   List<EstoqueProduto> produtos) {
+    public Estoque(Long id, String descricao,
+                   Endereco endereco, List<EstoqueProduto> produtos) {
         this.id = id;
         this.descricao = descricao;
         this.endereco = endereco;
@@ -47,11 +51,11 @@ public class Estoque {
         this.descricao = descricao;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 

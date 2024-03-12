@@ -27,8 +27,8 @@ public class Usuario {
     @ManyToMany
     @JoinTable(
             name = "permissao",
-            joinColumns = @JoinColumn(name = "id_usuario"),
-            inverseJoinColumns = @JoinColumn(name = "id_papel")
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "id_papel", nullable = false)
     )
     private List<Papel> papeis;
 

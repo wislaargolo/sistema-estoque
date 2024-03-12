@@ -21,7 +21,7 @@ public class Loja {
     private String cnpj;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco")
+    @JoinColumn(name = "id_endereco", nullable = false)
     private Endereco endereco;
 
     public Loja() {}

@@ -26,7 +26,7 @@ public class Movimentacao {
     private TipoMovimentacao tipoMovimentacao;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
     public Movimentacao() {}

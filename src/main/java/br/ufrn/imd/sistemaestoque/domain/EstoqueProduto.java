@@ -22,11 +22,11 @@ public class EstoqueProduto {
     private Integer quantidade;
 
     @ManyToOne
-    @JoinColumn(name = "id_produto")
+    @JoinColumn(name = "id_produto", nullable = false)
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn(name = "id_estoque")
+    @JoinColumn(name = "id_estoque", nullable = false)
     private Estoque estoque;
 
     public EstoqueProduto() {}
